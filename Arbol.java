@@ -16,8 +16,8 @@ public class Arbol {
                 // Operadores aritméticos
                 case SUMA:
                 case RESTA:
-                case MULTIPLICACION:
-                case DIVISION:
+                case ASTERISCO: //MULTIPLICACION
+                case GUION: //DIVISION
                     SolverAritmetico solver = new SolverAritmetico(n);
                     Object res = solver.resolver();
                     System.out.println(res);
