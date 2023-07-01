@@ -14,12 +14,30 @@ public class SolverAritmetico {
     private Object resolver(Nodo n){
         // No tiene hijos, es un operando
         if(n.getHijos() == null){
-            if(n.getValue().tipo == TipoToken.NUMBER || n.getValue().tipo == TipoToken.STRING){
+            if(n.getValue().tipo == TipoToken.NUMBER || n.getValue().tipo == TipoToken.STRING)
+            {
                 return n.getValue().literal;
             }
-            else if(n.getValue().tipo == TipoToken.IDENTIFICADOR){
+            else if(n.getValue().tipo == TipoToken.IDENTIFICADOR)
+            {
                 // Ver la tabla de símbolos
-                obtener(TipoToken.IDENTIFICADOR);
+                //se busca si la variable existe, se llama a la función "Existe identificador"
+                if(TablaSimbolos.existeIdentificador(n.getValue().tipo) == true)
+                {
+                    return TablaSimbolos.obtener(n.getValue().tipo);
+                }
+                else
+                {
+                    System.out.println("No existe: " + n.getValue().tipo);
+                }
+            }
+            else if(n.getValue().tipo == TipoToken.TRUE)
+            {
+                return true;
+            }
+            else if(n.getValue().tipo == TipoToken.FALSE)
+            {
+                return false;
             }
         }
 
