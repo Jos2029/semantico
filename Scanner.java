@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +39,7 @@ public class Scanner {
         palabrasReservadas.put("class", TipoToken.CLASS);
         palabrasReservadas.put("fun",TipoToken.FUN);
         palabrasReservadas.put("return", TipoToken.RETURN);
+        
     }
 
     Scanner(String source){

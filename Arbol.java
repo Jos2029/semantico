@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +25,7 @@ public class Arbol {
 
                 case VAR:
                     // Crear una variable. Usar tabla de simbolos
+                   // asignar( , );
                     break;
                 case IF:
                     break;

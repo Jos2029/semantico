@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 import java.util.List;
 
 import javax.print.DocFlavor.STRING;

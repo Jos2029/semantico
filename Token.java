@@ -1,4 +1,6 @@
-package semantico;
+package semanticoprueba2;
+import java.util.HashMap;
+import java.util.Map;
 public class Token {
 
     final TipoToken tipo;
@@ -70,16 +72,16 @@ public class Token {
 
     private int obtenerPrecedencia(){
         switch (this.tipo){
-            case MULTIPLICACION:
-            case DIVISION:
+            case ASTERISCO: //MULTIPLICACION
+            case GUION: //DIVISION
                 return 3;
             case SUMA:
             case RESTA:
                 return 2;
             case IGUAL:
                 return 1;
-            case MAYOR:
-            case MAYOR_IGUAL:
+            case MAYOR_QUE:
+            case MAYOR_O_IGUAL:
                 return 1;
         }
 
@@ -88,15 +90,18 @@ public class Token {
 
     public int aridad(){
         switch (this.tipo) {
-            case MULTIPLICACION:
-            case DIVISION:
+            case ASTERISCO: //MULTIPLICACION
+            case GUION: //DIVISION
             case SUMA:
             case RESTA:
             case IGUAL:
-            case MAYOR:
-            case MAYOR_IGUAL:
+            case MAYOR_QUE:
+            case MAYOR_O_IGUAL:
                 return 2;
         }
         return 0;
     }
+
+
+    
 }

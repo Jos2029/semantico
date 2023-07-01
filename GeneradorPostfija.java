@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -42,21 +42,21 @@ public class GeneradorPostfija {
             else if(t.esOperando()){
                 postfija.add(t);
             }
-            else if(t.tipo == TipoToken.LPAREN){
+            else if(t.tipo == TipoToken.PARENTESIS_ABRE){
                 pila.push(t);
             }
-            else if(t.tipo == TipoToken.RPAREN){
-                while(!pila.isEmpty() && pila.peek().tipo != TipoToken.LPAREN){
+            else if(t.tipo == TipoToken.PARENTESIS_CIERRA){
+                while(!pila.isEmpty() && pila.peek().tipo != TipoToken.PARENTESIS_ABRE){
                     Token temp = pila.pop();
                     postfija.add(temp);
                 }
-                if(pila.peek().tipo == TipoToken.LPAREN){
+                if(pila.peek().tipo == TipoToken.PARENTESIS_CIERRA){
                     pila.pop();
                 }
 
                 // Esta sección de aquí es para manejar el ")" que cierra la
                 // condición de la estructura de control
-                if(estructuraDeControl && infija.get(i + 1).tipo == TipoToken.LBRACE){
+                if(estructuraDeControl && infija.get(i + 1).tipo == TipoToken.CORCHETE_ABRE){
                     postfija.add(new Token(TipoToken.PUNTO_COMA, ";", null, j));
                 }
             }
@@ -68,19 +68,19 @@ public class GeneradorPostfija {
                 pila.push(t);
             }
             else if(t.tipo == TipoToken.PUNTO_COMA){
-                while(!pila.isEmpty() && pila.peek().tipo != TipoToken.LBRACE){
+                while(!pila.isEmpty() && pila.peek().tipo != TipoToken.CORCHETE_ABRE){
                     Token temp = pila.pop();
                     postfija.add(temp);
                 }
                 postfija.add(t);
             }
-            else if(t.tipo == TipoToken.LBRACE){
+            else if(t.tipo == TipoToken.CORCHETE_ABRE){
                 // Se mete a la pila, tal como el parentesis. Este paso
                 // pudiera omitirse, sólo hay que tener cuidado en el manejo
                 // del "}".
                 pila.push(t);
             }
-            else if(t.tipo == TipoToken.RBRACE && estructuraDeControl){
+            else if(t.tipo == TipoToken.CORCHETE_CIERRA && estructuraDeControl){
 
                 // Primero verificar si hay un else:
                 if(infija.get(i + 1).tipo == TipoToken.ELSE){
@@ -123,7 +123,7 @@ public class GeneradorPostfija {
             pilaEstructurasDeControl.pop();
             postfija.add(new Token(TipoToken.PUNTO_COMA, ";", null,j));
         }
-
+        System.out.println(postfija);
         return postfija;
     }
 

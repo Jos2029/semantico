@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -55,8 +55,8 @@ public class Interprete {
             System.out.println(token);
         }*/
 
-        /*Analizador parser = new Analizador(tokens);
-        parser.parse();*/
+        Analizador parser = new Analizador(tokens);
+        parser.parse();
 
         GeneradorPostfija gpf = new GeneradorPostfija(tokens);
         List<Token> postfija = gpf.convertir();

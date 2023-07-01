@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 
 public class SolverAritmetico {
 
@@ -14,11 +14,12 @@ public class SolverAritmetico {
     private Object resolver(Nodo n){
         // No tiene hijos, es un operando
         if(n.getHijos() == null){
-            if(n.getValue().tipo == TipoToken.NUMERO || n.getValue().tipo == TipoToken.CADENA){
+            if(n.getValue().tipo == TipoToken.NUMBER || n.getValue().tipo == TipoToken.STRING){
                 return n.getValue().literal;
             }
             else if(n.getValue().tipo == TipoToken.IDENTIFICADOR){
                 // Ver la tabla de símbolos
+                obtener(TipoToken.IDENTIFICADOR);
             }
         }
 
@@ -35,19 +36,21 @@ public class SolverAritmetico {
                     return ((Double)resultadoIzquierdo + (Double) resultadoDerecho);
                 case RESTA:
                     return ((Double)resultadoIzquierdo - (Double) resultadoDerecho);
-                case MULTIPLICACION:
+                case ASTERISCO: //MULTIPLICACION
                     return ((Double)resultadoIzquierdo * (Double) resultadoDerecho);
-                case DIVISION:
+                case GUION: //DIVISION
                     return ((Double)resultadoIzquierdo / (Double) resultadoDerecho);
             }
         }
         else if(resultadoIzquierdo instanceof String && resultadoDerecho instanceof String){
             if (n.getValue().tipo == TipoToken.SUMA){
                 // Ejecutar la concatenación
+                resultadoIzquierdo.concat(resultadoDerecho);
             }
         }
         else{
             // Error por diferencia de tipos
+            System.out.println("El tipo de dato es distinto");
         }
 
         return null;

@@ -1,4 +1,4 @@
-package semantico;
+package semanticoprueba2;
 public enum TipoToken {
     // Crear un tipoToken por palabra reservada
     // Crear un tipoToken: identificador, una cadena y numero
