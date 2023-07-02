@@ -58,14 +58,37 @@ public class SolverAritmetico {
                     return ((Double)resultadoIzquierdo * (Double) resultadoDerecho);
                 case GUION: //DIVISION
                     return ((Double)resultadoIzquierdo / (Double) resultadoDerecho);
+                case MENOR_QUE:
+                    return((Double)resultadoIzquierdo < (Double) resultadoDerecho);
+                case MENOR_O_IGUAL:
+                    return((Double)resultadoIzquierdo <= (Double) resultadoDerecho);
+                case MAYOR_QUE:
+                    return((Double)resultadoIzquierdo > (Double) resultadoDerecho);
+                case MAYOR_O_IGUAL:
+                    return((Double)resultadoIzquierdo >= (Double) resultadoDerecho);
+                case COMPARACION:
+                    return (((Double)resultadoIzquierdo).equals((Double) resultadoDerecho)); // se usa equals para comparar si son iguales
+                case ADMIRACION_CIERRA:
+                    return (!((Double)resultadoIzquierdo).equals((Double) resultadoDerecho)); // se usa equals para comparar si son diferentes
+                case IGUAL: // revisar si son iguales para poderlo agregar a la tabla de símbolos
+                    if(izq.getValue().tipo == TipoToken.IDENTIFICADOR) // se revisa si el nodo izquierdo es un identificador para que sea correcto asignarlo
+                    {
+                        TablaSimbolos.asignar(izq.getValue().tipo, resultadoDerecho); // se asigna el valor
+                    } 
+                    
             }
         }
         else if(resultadoIzquierdo instanceof String && resultadoDerecho instanceof String){
             if (n.getValue().tipo == TipoToken.SUMA){
                 // Ejecutar la concatenación
-                resultadoIzquierdo.concat(resultadoDerecho);
+                //resultadoIzquierdo.concat(resultadoDerecho);
+                return (String) resultadoIzquierdo + resultadoDerecho;
+            }
+            else{
+                System.out.println("No coincide el tipo de dato");
             }
         }
+        
         else{
             // Error por diferencia de tipos
             System.out.println("El tipo de dato es distinto");
